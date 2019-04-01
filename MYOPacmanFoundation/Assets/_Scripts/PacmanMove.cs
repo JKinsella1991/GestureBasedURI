@@ -24,13 +24,14 @@ public class PacmanMove : MonoBehaviour {
         //Testing keyboard input listener
         if ((Vector2)transform.position == destination)
         {
-            if (Input.GetKey(KeyCode.UpArrow) && valid(Vector2.up))
+            Debug.Log("Movement semi permitted");
+            if (Input.GetKey(KeyCode.UpArrow))
                 destination = (Vector2)transform.position + Vector2.up;
-            if (Input.GetKey(KeyCode.RightArrow) && valid(Vector2.right))
+            if (Input.GetKey(KeyCode.RightArrow))
                 destination = (Vector2)transform.position + Vector2.right;
-            if (Input.GetKey(KeyCode.DownArrow) && valid(-Vector2.up))
+            if (Input.GetKey(KeyCode.DownArrow))
                 destination = (Vector2)transform.position - Vector2.up;
-            if (Input.GetKey(KeyCode.LeftArrow) && valid(-Vector2.right))
+            if (Input.GetKey(KeyCode.LeftArrow))
                 destination = (Vector2)transform.position - Vector2.right;
         }
     }
