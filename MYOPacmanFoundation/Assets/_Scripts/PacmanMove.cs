@@ -1,42 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using System.Collections;
 
-public class PacmanMove : MonoBehaviour {
-
+public class PacmanMove : MonoBehaviour
+{
     public float speed = 0.4f;
-    Vector2 destination = Vector2.zero;
+    Vector2 dest = Vector2.zero;
 
-    // Start is called before the first frame update
     void Start()
     {
-        destination = transform.position;
+        dest = transform.position;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
-        //Move closer to destination
-        Vector2 p = Vector2.MoveTowards(transform.position, destination, speed);
+        // Move closer to Destination
+        Vector2 p = Vector2.MoveTowards(transform.position, dest, speed);
         GetComponent<Rigidbody2D>().MovePosition(p);
 
-
-        //Testing keyboard input listener
-        if ((Vector2)transform.position == destination)
+        // Check for Input if not moving
+        if ((Vector2)transform.position == dest)
         {
-            if (Input.GetKey(KeyCode.UpArrow) && valid(Vector2.up))
-                destination = (Vector2)transform.position + Vector2.up;
-            if (Input.GetKey(KeyCode.RightArrow) && valid(Vector2.right))
-                destination = (Vector2)transform.position + Vector2.right;
-            if (Input.GetKey(KeyCode.DownArrow) && valid(-Vector2.up))
-                destination = (Vector2)transform.position - Vector2.up;
-            if (Input.GetKey(KeyCode.LeftArrow) && valid(-Vector2.right))
-                destination = (Vector2)transform.position - Vector2.right;
+            if (Input.GetKey(KeyCode.UpArrow) && Valid(Vector2.up))
+                
+                dest = (Vector2)transform.position + Vector2.up;
+                Debug.Log("Up");
+            if (Input.GetKey(KeyCode.RightArrow) && Valid(Vector2.right))
+                
+                dest = (Vector2)transform.position + Vector2.right;
+                Debug.Log("Right");
+            if (Input.GetKey(KeyCode.DownArrow) && Valid(-Vector2.up))
+                dest = (Vector2)transform.position - Vector2.up;
+                Debug.Log("Right");
+            if (Input.GetKey(KeyCode.LeftArrow) && Valid(-Vector2.right))
+                dest = (Vector2)transform.position - Vector2.right;
+                Debug.Log("Right");
         }
+
+        // Animation Parameters
+        Vector2 dir = dest - (Vector2)transform.position;
+        GetComponent<Animator>().SetFloat("DirX", dir.x);
+        GetComponent<Animator>().SetFloat("DirY", dir.y);
     }
 
-    //Checks if Pacman will be obstructed by something ahead of him
-    bool valid(Vector2 dir)
+    bool Valid(Vector2 dir)
     {
         // Cast Line from 'next to Pac-Man' to 'Pac-Man'
         Vector2 pos = transform.position;
@@ -44,4 +50,3 @@ public class PacmanMove : MonoBehaviour {
         return (hit.collider == GetComponent<Collider2D>());
     }
 }
-
