@@ -7,7 +7,7 @@ public class GhostMovement : MonoBehaviour
     public Transform[] waypoints;
     int waypointIndex = 0;
 
-    public float speed = 2f;
+    public float speed = 1f;
 
     // Update is called once per frame
     void FixedUpdate()
