@@ -7,7 +7,7 @@ public class GhostMovement : MonoBehaviour
     public Transform[] waypoints;
     int waypointIndex = 0;
 
-    public float speed = 1f;
+    public float speed = 2f;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -21,9 +21,20 @@ public class GhostMovement : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, speed * Time.deltaTime);
 
-        if (transform.position == waypoints [waypointIndex].transform.position)
+        if (Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 0.39f)
         {
             IncrementIndex();
+            /*Debug.Log("In transform");
+            if (Vector3.Distance(transform.position, waypoints[waypointIndex].transform.position) < 10f){
+                Debug.Log("In range");
+                IncrementIndex();
+            }
+            if (Vector3.Distance(transform.position, waypoints[waypointIndex].position) < -10f)
+            {
+                Debug.Log("In Range");
+                IncrementIndex();
+            }
+            */
         }
 
         if (waypointIndex == waypoints.Length)
