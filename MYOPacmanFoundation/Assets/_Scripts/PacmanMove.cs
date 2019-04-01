@@ -20,20 +20,15 @@ public class PacmanMove : MonoBehaviour
         // Check for Input if not moving
         if ((Vector2)transform.position == dest)
         {
-            if (Input.GetKey(KeyCode.UpArrow) && Valid(Vector2.up))
-                
-                dest = (Vector2)transform.position + Vector2.up;
-                Debug.Log("Up");
-            if (Input.GetKey(KeyCode.RightArrow) && Valid(Vector2.right))
-                
-                dest = (Vector2)transform.position + Vector2.right;
-                Debug.Log("Right");
-            if (Input.GetKey(KeyCode.DownArrow) && Valid(-Vector2.up))
-                dest = (Vector2)transform.position - Vector2.up;
-                Debug.Log("Right");
-            if (Input.GetKey(KeyCode.LeftArrow) && Valid(-Vector2.right))
-                dest = (Vector2)transform.position - Vector2.right;
-                Debug.Log("Right");
+            Debug.Log("Movement semi permitted");
+            if (Input.GetKey(KeyCode.UpArrow))
+                destination = (Vector2)transform.position + Vector2.up;
+            if (Input.GetKey(KeyCode.RightArrow))
+                destination = (Vector2)transform.position + Vector2.right;
+            if (Input.GetKey(KeyCode.DownArrow))
+                destination = (Vector2)transform.position - Vector2.up;
+            if (Input.GetKey(KeyCode.LeftArrow))
+                destination = (Vector2)transform.position - Vector2.right;
         }
 
         // Animation Parameters
