@@ -9,6 +9,7 @@ public class MainMenuSceneController : MonoBehaviour
     // == OnClick events ==
     public void PlayOnClick()
     {
+
         SceneManager.LoadSceneAsync(SceneNames.LEVEL_NAME);
     }
 

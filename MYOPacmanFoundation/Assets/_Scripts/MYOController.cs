@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utilities;
+using WindowsInput;
+using WindowsInput.Native;
 
 
 using LockingPolicy = Thalmic.Myo.LockingPolicy;
@@ -39,15 +41,19 @@ public class MYOController : MonoBehaviour
         if (thalmicMyo.pose != _lastPose)
         {
             _lastPose = thalmicMyo.pose;
-
+            /*
+            new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.DOWN);
+            if (Input.GetKeyDown("down"))
+            {
+                print("Down key was pressed");
+            }
+            */
             // Vibrate the Myo armband when a fist is made.
             if (thalmicMyo.pose == Pose.Fist)
             {
                 thalmicMyo.Vibrate(VibrationType.Medium);
-
+                new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.SPACE);
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
-                SceneManager.LoadSceneAsync(SceneNames.LEVEL_NAME);
-                // Change material when wave in, wave out or double tap poses are made.
             }
         }
     }
