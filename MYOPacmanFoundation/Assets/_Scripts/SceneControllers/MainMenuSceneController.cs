@@ -14,7 +14,7 @@ public class MainMenuSceneController : MonoBehaviour
 
     public void QuitOnClick()
     {
-        //Debug.Log("Quit Application");
+        Debug.Log("Quit Application");
         Application.Quit();
     }
 }
