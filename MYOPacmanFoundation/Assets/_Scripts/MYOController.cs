@@ -33,7 +33,7 @@ public class MYOController : MonoBehaviour
         // Access the ThalmicMyo component attached to the Myo game object.
         ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo>();
 
-        
+
 
 
         // Check if the pose has changed since last update.
@@ -44,13 +44,7 @@ public class MYOController : MonoBehaviour
         if (thalmicMyo.pose != _lastPose)
         {
             _lastPose = thalmicMyo.pose;
-            /*
-            new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.DOWN);
-            if (Input.GetKeyDown("down"))
-            {
-                print("Down key was pressed");
-            }
-            */
+
             // Vibrate the Myo armband when a fist is made.
             if (thalmicMyo.pose == Pose.Fist)
             {
@@ -58,20 +52,33 @@ public class MYOController : MonoBehaviour
                 new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.SPACE);
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
+            if (thalmicMyo.pose == Pose.WaveOut)
+            {
+                thalmicMyo.Vibrate(VibrationType.Medium);
+                new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.RIGHT);
+                ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+            if (thalmicMyo.pose == Pose.WaveIn)
+            {
+                thalmicMyo.Vibrate(VibrationType.Medium);
+                new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.LEFT);
+                ExtendUnlockAndNotifyUserAction(thalmicMyo);
+            }
+            
         }
-
-        float MYORotX = myo.transform.localRotation.eulerAngles.x;
-        float MYORotY = myo.transform.localRotation.eulerAngles.y;
         /*
-        if (MYORotY <= 180f && MYORotY >= 270f)
+        //float MYORotX = myo.transform.localRotation.eulerAngles.x;
+        float MYORotY = myo.transform.localRotation.eulerAngles.y;
+        
+        if (MYORotY >= 180f && MYORotY <= 360f)
         {
             MYORotY -= 180f;
         }
-        */
+        
 
         if (MYORotY < 19f)
         {
-            armPos = -1;
+            armPos = -1;// Down
             Debug.Log(armPos);
         }
         if (MYORotY < 60f && MYORotY > 20f)
@@ -82,7 +89,7 @@ public class MYOController : MonoBehaviour
         }
         if (MYORotY > 80f)
         {
-            armPos = 1;
+            armPos = 1;// Up
             Debug.Log(armPos);
         }
 
@@ -106,8 +113,8 @@ public class MYOController : MonoBehaviour
                 onceCalled = true;
             }
         }
-        Debug.Log(MYORotY);
-
+        //Debug.Log(MYORotY);
+        */
     }
 
     // Extend the unlock if ThalmcHub's locking policy is standard, and notifies the given myo that a user action was
@@ -122,8 +129,5 @@ public class MYOController : MonoBehaviour
         }
 
         myo.NotifyUserAction();
-    }
-
- 
-        
+    }       
 }
