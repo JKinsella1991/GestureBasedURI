@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PacmanMove : MonoBehaviour
 {
-    public float speed = 0.4f;
+    public float speed = 0.004f;
     Vector2 dest = Vector2.zero;
 
     void Start()
@@ -20,15 +20,26 @@ public class PacmanMove : MonoBehaviour
         // Check for Input if not moving
         if ((Vector2)transform.position == dest)
         {
-            Debug.Log("Movement semi permitted");
-            if (Input.GetKey(KeyCode.UpArrow))
-                destination = (Vector2)transform.position + Vector2.up;
-            if (Input.GetKey(KeyCode.RightArrow))
-                destination = (Vector2)transform.position + Vector2.right;
-            if (Input.GetKey(KeyCode.DownArrow))
-                destination = (Vector2)transform.position - Vector2.up;
-            if (Input.GetKey(KeyCode.LeftArrow))
-                destination = (Vector2)transform.position - Vector2.right;
+            if (Input.GetKey(KeyCode.W) && valid(Vector2.up))
+            {
+                Debug.Log("UP");
+                dest = (Vector2)transform.position + Vector2.up;
+            }
+            if (Input.GetKey(KeyCode.D) && valid(Vector2.right))
+            {
+                Debug.Log("RIGHT");
+                dest = (Vector2)transform.position + Vector2.right;
+            }
+            if (Input.GetKey(KeyCode.S) && valid(-Vector2.up))
+            {
+                Debug.Log("DOWN");
+                dest = (Vector2)transform.position - Vector2.up;
+            }
+            if (Input.GetKey(KeyCode.A) && valid(-Vector2.right))
+            {
+                Debug.Log("LEFT");
+                dest = (Vector2)transform.position - Vector2.right;
+            }
         }
 
         // Animation Parameters
@@ -37,7 +48,7 @@ public class PacmanMove : MonoBehaviour
         GetComponent<Animator>().SetFloat("DirY", dir.y);
     }
 
-    bool Valid(Vector2 dir)
+    bool valid(Vector2 dir)
     {
         // Cast Line from 'next to Pac-Man' to 'Pac-Man'
         Vector2 pos = transform.position;
