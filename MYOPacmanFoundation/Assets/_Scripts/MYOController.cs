@@ -17,6 +17,9 @@ public class MYOController : MonoBehaviour
     public GameObject myo = null;
     private Pose _lastPose = Pose.Unknown;
 
+    bool onceCalled = false;
+
+    int armPos = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +33,8 @@ public class MYOController : MonoBehaviour
         // Access the ThalmicMyo component attached to the Myo game object.
         ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo>();
 
-
         
+
 
         // Check if the pose has changed since last update.
         // The ThalmicMyo component of a Myo game object has a pose property that is set to the
@@ -55,20 +58,56 @@ public class MYOController : MonoBehaviour
                 new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.SPACE);
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
-            
         }
-        
-            if (thalmicMyo.gyroscope.y < -40)
+
+        float MYORotX = myo.transform.localRotation.eulerAngles.x;
+        float MYORotY = myo.transform.localRotation.eulerAngles.y;
+        /*
+        if (MYORotY <= 180f && MYORotY >= 270f)
+        {
+            MYORotY -= 180f;
+        }
+        */
+
+        if (MYORotY < 19f)
+        {
+            armPos = -1;
+            Debug.Log(armPos);
+        }
+        if (MYORotY < 60f && MYORotY > 20f)
+        {
+            Debug.Log("Neutral");
+            armPos = 0;
+            onceCalled = false;
+        }
+        if (MYORotY > 80f)
+        {
+            armPos = 1;
+            Debug.Log(armPos);
+        }
+
+        if (armPos == -1)
+        {
+            if(onceCalled == false)
             {
-                Debug.Log("DOWN");
                 new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.DOWN);
+                Debug.Log("DOWN");
+
+                onceCalled = true;
             }
-            if (thalmicMyo.gyroscope.y > 40)
+        }
+        if (armPos == 1)
+        {
+            if (onceCalled == false)
             {
-                Debug.Log("UP");
                 new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.UP);
+                Debug.Log("UP");
+
+                onceCalled = true;
             }
-        
+        }
+        Debug.Log(MYORotY);
+
     }
 
     // Extend the unlock if ThalmcHub's locking policy is standard, and notifies the given myo that a user action was
@@ -85,4 +124,6 @@ public class MYOController : MonoBehaviour
         myo.NotifyUserAction();
     }
 
+ 
+        
 }
