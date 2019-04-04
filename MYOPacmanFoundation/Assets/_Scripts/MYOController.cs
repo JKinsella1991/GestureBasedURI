@@ -55,7 +55,20 @@ public class MYOController : MonoBehaviour
                 new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.SPACE);
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
+            
         }
+        
+            if (thalmicMyo.gyroscope.y < -40)
+            {
+                Debug.Log("DOWN");
+                new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.DOWN);
+            }
+            if (thalmicMyo.gyroscope.y > 40)
+            {
+                Debug.Log("UP");
+                new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.UP);
+            }
+        
     }
 
     // Extend the unlock if ThalmcHub's locking policy is standard, and notifies the given myo that a user action was
