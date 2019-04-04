@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PacmanMove : MonoBehaviour
 {
-    public float speed = 0.4f;
+    public float speed = 0.004f;
     Vector2 dest = Vector2.zero;
 
     void Start()
@@ -37,7 +37,7 @@ public class PacmanMove : MonoBehaviour
         GetComponent<Animator>().SetFloat("DirY", dir.y);
     }
 
-    bool Valid(Vector2 dir)
+    bool valid(Vector2 dir)
     {
         // Cast Line from 'next to Pac-Man' to 'Pac-Man'
         Vector2 pos = transform.position;
