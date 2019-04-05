@@ -75,14 +75,11 @@ public class PacmanMove : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
             dest = (Vector2)transform.position + Vector2.up;
-
-        //if (Input.GetKey(KeyCode.RightArrow))
-        if (thalmicMyo.pose == Pose.WaveOut)
+        if (Input.GetKey(KeyCode.RightArrow))
             dest = (Vector2)transform.position + Vector2.right;
         if (Input.GetKey(KeyCode.DownArrow))
             dest = (Vector2)transform.position - Vector2.up;
-        //if (Input.GetKey(KeyCode.LeftArrow))
-        if (thalmicMyo.pose == Pose.WaveIn)
+        if (Input.GetKey(KeyCode.LeftArrow))
             dest = (Vector2)transform.position - Vector2.right;
 
         // Animation Parameters
