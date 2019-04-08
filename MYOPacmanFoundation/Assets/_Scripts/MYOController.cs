@@ -14,7 +14,7 @@ using VibrationType = Thalmic.Myo.VibrationType;
 
 public class MYOController : MonoBehaviour
 {
-    public GameObject myo = null;
+    private GameObject myo;
     private Pose _lastPose = Pose.Unknown;
 
     public GameObject ControlsPanel; //holds the user interface
@@ -25,7 +25,7 @@ public class MYOController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        myo = GameObject.FindGameObjectWithTag("Myo");
     }
 
     // Update is called once per frame

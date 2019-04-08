@@ -9,6 +9,9 @@ public class GhostMovement : MonoBehaviour
 
     public float speed = 1f;
 
+    public GameObject GameOverPanel; //holds the user interface
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -52,6 +55,11 @@ public class GhostMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D co)
     {
         if (co.name == "pacman")
+        {
             Destroy(co.gameObject);
+            Time.timeScale = 0.0f;// freezes the game
+            GameOverPanel.SetActive(true);// deactivates the pause menu
+        }
+
     }
 }
