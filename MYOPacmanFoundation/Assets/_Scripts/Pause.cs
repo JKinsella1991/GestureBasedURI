@@ -20,6 +20,8 @@ public class Pause : MonoBehaviour
     private GameObject myoGameObject;
     private Pose _lastPose = Pose.Unknown;
 
+    AudioSource m_MyAudioSource;
+
     void Start()
     {
         myoGameObject = GameObject.FindGameObjectWithTag("Myo");
@@ -48,6 +50,9 @@ public class Pause : MonoBehaviour
                     {
                         QuitGame();// Quit Game
                     }
+
+
+
                 }
                 else
                     PauseGame();
