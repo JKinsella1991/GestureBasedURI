@@ -17,9 +17,10 @@ public class MYOController : MonoBehaviour
     public GameObject myo = null;
     private Pose _lastPose = Pose.Unknown;
 
-    bool onceCalled = false;
+    public GameObject ControlsPanel; //holds the user interface
 
-    int armPos = 0;
+    //bool onceCalled = false;
+    //int armPos = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -64,7 +65,10 @@ public class MYOController : MonoBehaviour
                 new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.LEFT);
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
-            
+            if (thalmicMyo.pose == Pose.DoubleTap)
+            {
+                ControlsPanel.SetActive(false);// deactivates controls panel
+            }
         }
         /*
         //float MYORotX = myo.transform.localRotation.eulerAngles.x;

@@ -8,5 +8,7 @@ namespace Utilities
     public class SceneNames
     {
         public const string LEVEL_NAME = "SampleScene";
+        public const string MAIN_MENU = "MainMenu";
+
     }
 }

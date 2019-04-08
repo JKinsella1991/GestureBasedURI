@@ -45,7 +45,6 @@ public class PacmanMove : MonoBehaviour
                 _lastPose = thalmicMyo.pose;
 
                 // Vibrate the Myo armband when a fist is made.
-               
                 if (thalmicMyo.pose == Pose.WaveOut)
                 {
                     thalmicMyo.Vibrate(VibrationType.Short);
