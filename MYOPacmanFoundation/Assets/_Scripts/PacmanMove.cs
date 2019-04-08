@@ -8,6 +8,8 @@ using VibrationType = Thalmic.Myo.VibrationType;
 using WindowsInput.Native;
 using WindowsInput;
 
+
+
 public class PacmanMove : MonoBehaviour
 {
     public float speed = 0.004f;
@@ -16,7 +18,7 @@ public class PacmanMove : MonoBehaviour
     private GameObject myoGameObject;
     private Pose _lastPose = Pose.Unknown;
 
-
+    AudioSource m_MyAudioSource;
 
     void Start()
     {
@@ -87,6 +89,8 @@ public class PacmanMove : MonoBehaviour
         Vector2 dir = dest - (Vector2)transform.position;
         GetComponent<Animator>().SetFloat("DirX", dir.x);
         GetComponent<Animator>().SetFloat("DirY", dir.y);
+
+     
     }
 
     bool valid(Vector2 dir)
