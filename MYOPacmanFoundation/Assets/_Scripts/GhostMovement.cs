@@ -45,7 +45,7 @@ public class GhostMovement : MonoBehaviour
 
     void IncrementIndex()
     {
-        Debug.Log(waypointIndex);
+        //Debug.Log(waypointIndex);
         waypointIndex += 1;
     }
 

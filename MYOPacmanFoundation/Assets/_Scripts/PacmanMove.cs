@@ -59,16 +59,18 @@ public class PacmanMove : MonoBehaviour
                     ExtendUnlockAndNotifyUserAction(thalmicMyo);
                 }
 
-                if (thalmicMyo.pose == Pose.FingersSpread)
-                {
-                    thalmicMyo.Vibrate(VibrationType.Short);
-                    new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.DOWN);
-                    ExtendUnlockAndNotifyUserAction(thalmicMyo);
-                }
+                //if (myoGameObject.transform.rotation.z > 60)
                 if (thalmicMyo.pose == Pose.Fist)
                 {
                     thalmicMyo.Vibrate(VibrationType.Short);
                     new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.UP);
+                    ExtendUnlockAndNotifyUserAction(thalmicMyo);
+                }
+                //if (myoGameObject.transform.rotation.z < 20)
+                if (thalmicMyo.pose == Pose.FingersSpread)
+                {
+                    thalmicMyo.Vibrate(VibrationType.Short);
+                    new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.DOWN);
                     ExtendUnlockAndNotifyUserAction(thalmicMyo);
                 }
             }
