@@ -10,7 +10,7 @@ public class DotSpawner : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        GameObject smallDots = Instantiate(DotsPrefab, transform.position, transform.rotation);
+        GameObject smallDots = Instantiate(DotsPrefab, transform.position, transform.rotation);// Instantiates an instance of a small dot at each spawn point
         
     }
 

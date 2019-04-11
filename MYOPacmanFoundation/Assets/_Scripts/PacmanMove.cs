@@ -50,13 +50,13 @@ public class PacmanMove : MonoBehaviour
                 if (thalmicMyo.pose == Pose.WaveOut)
                 {
                     thalmicMyo.Vibrate(VibrationType.Short);
-                    new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.RIGHT);
+                    new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.RIGHT);// Movement handled by the event system mapped with the MYO
                     ExtendUnlockAndNotifyUserAction(thalmicMyo);
                 }
                 if (thalmicMyo.pose == Pose.WaveIn)
                 {
                     thalmicMyo.Vibrate(VibrationType.Short);
-                    new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.LEFT);
+                    new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.LEFT);// Movement handled by the event system mapped with the MYO
                     ExtendUnlockAndNotifyUserAction(thalmicMyo);
                 }
 
@@ -64,14 +64,14 @@ public class PacmanMove : MonoBehaviour
                 if (thalmicMyo.pose == Pose.Fist)
                 {
                     thalmicMyo.Vibrate(VibrationType.Short);
-                    new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.UP);
+                    new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.UP);// Movement handled by the event system mapped with the MYO
                     ExtendUnlockAndNotifyUserAction(thalmicMyo);
                 }
                 //if (myoGameObject.transform.rotation.z < 20)
                 if (thalmicMyo.pose == Pose.FingersSpread)
                 {
                     thalmicMyo.Vibrate(VibrationType.Short);
-                    new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.DOWN);
+                    new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.DOWN);// Movement handled by the event system mapped with the MYO
                     ExtendUnlockAndNotifyUserAction(thalmicMyo);
                 }
             }

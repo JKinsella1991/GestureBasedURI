@@ -13,18 +13,18 @@ using WindowsInput;
 
 public class Pause : MonoBehaviour
 {
-    public static bool GamePause = false;
+    public static bool GamePause = false;// Boolean controls the pause menu activation
 
     public GameObject PauseMenuPanel; //holds the user interface
 
-    private GameObject myoGameObject;
+    private GameObject myoGameObject;// Holds the MYO object
     private Pose _lastPose = Pose.Unknown;
 
     AudioSource m_MyAudioSource;
 
     void Start()
     {
-        myoGameObject = GameObject.FindGameObjectWithTag("Myo");
+        myoGameObject = GameObject.FindGameObjectWithTag("Myo");// Gets the MYO object from the hub
 
     }
     // Update is called once per frame
@@ -42,17 +42,15 @@ public class Pause : MonoBehaviour
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
                 if (GamePause == true)
                 {
-                    if (thalmicMyo.pose == Pose.DoubleTap)
+                    if (thalmicMyo.pose == Pose.DoubleTap)// 
                     {
                         ResumeGame();// Resume Game
                     }
                     if (thalmicMyo.pose == Pose.FingersSpread)
                     {
+                        Debug.Log("Game Quit");
                         QuitGame();// Quit Game
                     }
-
-
-
                 }
                 else
                     PauseGame();
@@ -62,8 +60,7 @@ public class Pause : MonoBehaviour
 
     public void PauseGame()
     {
-        //Debug.Log("test");
-        //when pause want to set the pauseGame = true
+        //when pause want to set the GamePause = true
         PauseMenuPanel.SetActive(true);// activates the pause menu
         Time.timeScale = 0.0f;// freezes the game
         GamePause = true;

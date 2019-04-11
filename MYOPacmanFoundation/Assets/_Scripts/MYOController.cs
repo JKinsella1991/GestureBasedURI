@@ -6,7 +6,6 @@ using Utilities;
 using WindowsInput;
 using WindowsInput.Native;
 
-
 using LockingPolicy = Thalmic.Myo.LockingPolicy;
 using Pose = Thalmic.Myo.Pose;
 using UnlockType = Thalmic.Myo.UnlockType;
@@ -14,7 +13,7 @@ using VibrationType = Thalmic.Myo.VibrationType;
 
 public class MYOController : MonoBehaviour
 {
-    private GameObject myo;
+    private GameObject myo;// Object holding the MYO in the hub intialised in the splash screen
     private Pose _lastPose = Pose.Unknown;
 
     public GameObject ControlsPanel; //holds the user interface
@@ -34,9 +33,6 @@ public class MYOController : MonoBehaviour
         // Access the ThalmicMyo component attached to the Myo game object.
         ThalmicMyo thalmicMyo = myo.GetComponent<ThalmicMyo>();
 
-
-
-
         // Check if the pose has changed since last update.
         // The ThalmicMyo component of a Myo game object has a pose property that is set to the
         // currently detected pose (e.g. Pose.Fist for the user making a fist). If no pose is currently
@@ -49,20 +45,20 @@ public class MYOController : MonoBehaviour
             // Vibrate the Myo armband when a fist is made.
             if (thalmicMyo.pose == Pose.Fist)
             {
-                thalmicMyo.Vibrate(VibrationType.Medium);
-                new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.SPACE);
+                thalmicMyo.Vibrate(VibrationType.Medium);// vibration to notify the user that input has been taken
+                new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.SPACE);// Simulate keyboard input handled by default by the event system
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
             if (thalmicMyo.pose == Pose.WaveOut)
             {
-                thalmicMyo.Vibrate(VibrationType.Medium);
-                new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.RIGHT);
+                thalmicMyo.Vibrate(VibrationType.Medium);// vibration to notify the user that input has been taken
+                new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.RIGHT);// Simulate keyboard input handled by default by the event system
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
             if (thalmicMyo.pose == Pose.WaveIn)
             {
-                thalmicMyo.Vibrate(VibrationType.Medium);
-                new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.LEFT);
+                thalmicMyo.Vibrate(VibrationType.Medium);// vibration to notify the user that input has been taken
+                new InputSimulator().Keyboard.KeyPress(VirtualKeyCode.LEFT);// Simulate keyboard input handled by default by the event system
                 ExtendUnlockAndNotifyUserAction(thalmicMyo);
             }
             if (thalmicMyo.pose == Pose.DoubleTap)

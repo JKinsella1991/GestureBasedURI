@@ -26,10 +26,10 @@ public class GameOverController : MonoBehaviour
     {
         ThalmicMyo thalmicMyo = myoGameObject.GetComponent<ThalmicMyo>();
 
-        if (GameOverPanel.activeInHierarchy == true && thalmicMyo.pose == Pose.FingersSpread)
+        if (GameOverPanel.activeInHierarchy == true && thalmicMyo.pose == Pose.DoubleTap)
         {
             ExtendUnlockAndNotifyUserAction(thalmicMyo);
-            SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU);
+            SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU);// Back to main menu
 
         }
     }

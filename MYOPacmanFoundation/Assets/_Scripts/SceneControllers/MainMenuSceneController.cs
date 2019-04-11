@@ -11,18 +11,17 @@ public class MainMenuSceneController : MonoBehaviour
     // == OnClick events ==
     public void PlayOnClick()
     {
-
-        SceneManager.LoadSceneAsync(SceneNames.LEVEL_NAME);
+        SceneManager.LoadSceneAsync(SceneNames.LEVEL_NAME);// Loads up the game level
     }
 
     public void QuitOnClick()
     {
-        Debug.Log("Quit Application");
-        Application.Quit();
+        Debug.Log("Quit Application");// Unity doesn't allow a quit unlees it's in a SDK so for testing
+        Application.Quit();// Quits the application
     }
 
     public void ControlsOnClick()
     {
-        ControlsPanel.SetActive(true);// activates the controls panel
+        ControlsPanel.SetActive(true);// Activates the controls panel
     }
 }

@@ -15,7 +15,7 @@ public class SplasheSceneController : MonoBehaviour
     IEnumerator LoadMainMenu()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU);// Load main menu after 2 seconds
+        SceneManager.LoadSceneAsync(SceneNames.MAIN_MENU);// Load main menu after 3 seconds
 
     }
 }
