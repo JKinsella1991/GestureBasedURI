@@ -24,3 +24,4 @@ The relevant imports for the MYO armband for unity can be found here
 ```
 https://github.com/thalmiclabs/myo-unity.git
 ```
+To install in unity open Assets go to import package select "custom package" and find where the package you downloaded is and import all
